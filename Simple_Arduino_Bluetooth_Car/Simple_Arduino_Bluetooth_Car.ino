@@ -29,7 +29,55 @@ void setup() {
 
 void loop() {
 
+  if (Serial.available() > 0) { // Se tiver precionado um comando no aplicativo, então
 
+    char comando = Serial.read(); // Cria a variavel comando e ler o serial e armazena na variavel
+
+    switch (comando) { // Se o comando for ...
+
+      case 'F': // ...Frente, então avança
+
+        digitalWrite(motor1A, HIGH);
+        digitalWrite(motor1B, LOW);
+        digitalWrite(motor2A, HIGH);
+        digitalWrite(motor2B, LOW);
+        break;
+
+      case 'B': // ...Tras, então recua
+
+        digitalWrite(motor1A, LOW);
+        digitalWrite(motor1B, HIGH);
+        digitalWrite(motor2A, LOW);
+        digitalWrite(motor2B, HIGH);
+        break;
+
+      case 'L': // ...Esquerda, então vira à esquerda
+
+        digitalWrite(motor1A, LOW);
+        digitalWrite(motor1B, HIGH);
+        digitalWrite(motor2A, HIGH);
+        digitalWrite(motor2B, LOW);
+        break;
+
+      case 'R': // ...Direita, então vira à direita
+
+        digitalWrite(motor1A, HIGH);
+        digitalWrite(motor1B, LOW);
+        digitalWrite(motor2A, LOW);
+        digitalWrite(motor2B, HIGH);
+        break;
+
+      case 'S': // ...Nenhum, então para
+
+        digitalWrite(motor1A, LOW);
+        digitalWrite(motor1B, LOW);
+        digitalWrite(motor2A, LOW);
+        digitalWrite(motor2B, LOW);
+        break;
+
+    }
+
+  }
 
 }
 
